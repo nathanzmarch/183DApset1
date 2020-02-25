@@ -23,3 +23,5 @@ for i = 1:L*H
         init_pol(i) = -1;
     end
 end
+init_pol
+displayPolicy(init_pol, L, H);
