@@ -21,7 +21,9 @@ for i = 1:L*H
     %if we can move right initial policy is left otherwise its not move
     if(sasprob(i, -1, i-1) == 1 - pe + 0.25*pe)
         init_pol(i) = -1;
+    elseif (sasprob(i, -1, i-1) == -1)
+        init_pol(i) = -9001;
     end
 end
 init_pol
-displayPolicy(init_pol, L, H);
+displayPolicy(init_pol, L, H)

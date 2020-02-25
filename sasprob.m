@@ -1,4 +1,8 @@
 function [psas] = sasprob(s, a , sp)
+    % changes index-1 input to index-0 input
+    s = s-1;
+    sp = sp-1;
+    
     L = 5;
     pe = 0.01;
     %if it hits a boundary
