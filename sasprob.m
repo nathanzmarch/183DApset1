@@ -1,6 +1,11 @@
 function [psas] = sasprob(s, a , sp)
     L = 5;
     pe = 0.01;
+    %if it hits a boundary
+    if(sp == 6 || sp == 7 || sp == 16 || sp == 17)
+        psas = 0;
+        return;
+    end
     % if oustide bounding box
     if(s + a > 30 || s + a < 0 || mod(s,L) == 0 && a == -1 || mod(s,L) == L-1 && a == 1)
         psas = 0;
