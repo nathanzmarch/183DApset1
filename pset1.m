@@ -5,7 +5,7 @@ S = 0:1:L*H;
 Ns = L * H;
 
 % 1B
-%     up down left right stop
+% up down left right stop
 A = [ L, -L, -1, 1, 0];
 Na = 5;
 
@@ -30,20 +30,23 @@ for s = 1:L*H
 end
 
 % 3B - Check displayPolicy.m
-displayPolicy(init_pol, L, H);
+initialPolicy = displayPolicy(init_pol, L, H);
+initialPolicy
 
 % 3C - Check policyEval.m
 values = policyEval(init_pol, A, gamma);
 
 % 3D - Check policyBackup.m
 back_pol = policyBackup(values, A, gamma);
-displayPolicy(back_pol, L, H);
+backupPolicy = displayPolicy(back_pol, L, H);
+backupPolicy
 
 % 3E/F - Check policyIteration.m
 tic
 best_pol = policyIteration(init_pol, A, gamma);
 toc
-displayPolicy(best_pol, L, H);
+optimalPolicy_pIter = displayPolicy(best_pol, L, H);
+optimalPolicy_pIter
 
 % 4A - Check valueIteration.m
 init_val = policyEval(init_pol, A, gamma);
@@ -53,5 +56,8 @@ valueIteration(init_val, A, gamma);
 tic
 best_pol = valueIteration(init_val, A, gamma);
 toc
-displayPolicy(best_pol, L, H);
+optimalPolicy_vIter = displayPolicy(best_pol, L, H);
+optimalPolicy_vIter
+
+
 

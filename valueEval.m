@@ -4,7 +4,7 @@ function [V] = valueEval(values, actions, gamma)
     
     V = values;
     delta = 1;
-    endCond = 0.0001;
+    endCond = 0.0000000001;
     
     while delta > endCond
         delta = 0;
