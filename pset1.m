@@ -15,12 +15,11 @@ Na = 5;
 % 2B see reward.m
 r = reward(9);
 
-% 3A 
+% 3A, policy is a probability distribution for each action
 pe = 0.01;
 gamma = 0.9;
-
-% policy contains a probability distribution for each move
 init_pol = zeros(5, L*H);
+
 for s = 1:L*H
     % if we can move then move left, otherwise the policy is stop
     if isObstacle(s-1) == 0 && isInBounds(s-1) == 1 && isValidMove(s, -1) == 1
@@ -30,5 +29,29 @@ for s = 1:L*H
     end
 end
 
-displayPolicy(init_pol, L, H)
-policyEval(init_pol, A, gamma);
+% 3B - Check displayPolicy.m
+displayPolicy(init_pol, L, H);
+
+% 3C - Check policyEval.m
+values = policyEval(init_pol, A, gamma);
+
+% 3D - Check policyBackup.m
+back_pol = policyBackup(values, A, gamma);
+displayPolicy(back_pol, L, H);
+
+% 3E/F - Check policyIteration.m
+tic
+best_pol = policyIteration(init_pol, A, gamma);
+toc
+displayPolicy(best_pol, L, H);
+
+% 4A - Check valueIteration.m
+init_val = policyEval(init_pol, A, gamma);
+valueIteration(init_val, A, gamma);
+
+% 4B - Check valueIteration.m
+tic
+best_pol = valueIteration(init_val, A, gamma);
+toc
+displayPolicy(best_pol, L, H);
+

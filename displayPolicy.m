@@ -18,5 +18,6 @@ function [policy_matrix] = displayPolicy(policy, L, H)
             policy_matrix(map_i, map_j) = A(best);
         end
     end
+    policy_matrix
     return
 end

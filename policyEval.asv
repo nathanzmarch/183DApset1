@@ -1,20 +1,33 @@
-function [values] = policyEval(policy, actions, discFactor)
-    Ns = length(policy(1));
+function [V] = policyEval(policy, actions, gamma)
+    Ns = length(policy(1,:));
     Na = length(actions);
     
-    V = np.zeros(Ns);
-    delta = 0;
+    V = zeros(1, Ns);
+    delta = 1;
     endCond = 0.0001;
     
     while delta > endCond
-       delta = 0;
-       V_new = np.zeros(Ns);
+        delta = 0;
+        V_new = zeros(1, Ns);
        
-       for s = 1:Ns
-           actionProbs = policy(:, s);
-           for action = 1:Na
-               V_new(s) = V_new(s) + actionProbs(acti
+        for s = 1:Ns
+            actionProbs = policy(:, s);
+            for a = 1:Na
+                sp = s + actions(a);
+                if isInBounds(s + actions(a)) == 0 || isObstacle(s + actions(a)) == 1
+                    continue;
+            end
+               if isInBounds(sp) == 1 && isObstacle(sp) == 0
+                   temp = sasprob(s, actions(a), sp) * (reward(sp) + gamma * V(sp));
+                   V_new(s) = V_new(s) + actionProbs(a) * temp;
+                end
+            end
+           if delta < abs(V_new(s) - V(s))
+               delta = abs(V_new(s) - V(s));
            end
        end
+       
+       V = V_new;
     end
+    return
 end
