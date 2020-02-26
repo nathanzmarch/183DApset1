@@ -9,6 +9,7 @@ function [P] = valueIteration(values, actions, gamma)
         V = V_new;
     end
     
+    displayValues(V, 5, 6);
     P = policyBackup(V, actions, gamma);
     return;
 end

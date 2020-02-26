@@ -9,6 +9,10 @@ function [policy_matrix] = displayPolicy(policy, L, H)
             map_i = H - i + 1;
             map_j = j;
             moveProbs = policy(:,(i - 1)*L + j);
+            if isObstacle((i-1)*L + j) == 1
+                policy_matrix(map_i, map_j) = "X";
+                continue;
+            end
             best = 1;
             for action = 1:5
                if moveProbs(best) < moveProbs(action)

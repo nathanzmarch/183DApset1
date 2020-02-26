@@ -45,7 +45,7 @@ backupPolicy
 tic
 best_pol = policyIteration(init_pol, A, gamma);
 toc
-optimalPolicy_pIter = displayPolicy(best_pol, L, H);
+optimalPolicy_pIter, optimalValue_pIter = displayPolicy(best_pol, L, H);
 optimalPolicy_pIter
 
 % 4A - Check valueIteration.m
@@ -56,8 +56,9 @@ valueIteration(init_val, A, gamma);
 tic
 best_pol = valueIteration(init_val, A, gamma);
 toc
-optimalPolicy_vIter = displayPolicy(best_pol, L, H);
+optimalPolicy_vIter, optimalValue_vIter = displayPolicy(best_pol, L, H);
 optimalPolicy_vIter
+
 
 
 
