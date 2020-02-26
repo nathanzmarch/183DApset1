@@ -1,0 +1,15 @@
+function [isValid] = isValidMove(s, a)
+    L = 5;
+    isValid = 1;
+    if isInBounds(s + a) == 0 || isObstacle(s + a) == 1
+        isValid = 1;
+        return;
+    end
+    
+    if a == L && isInBounds(s + a) == 1 && isObstacle(s + a) == 0
+        isValid = 0;
+    elseif a == -L && s - L < 1
+        isValid = 0;
+    elseif a == -1 && mod(s - 1)
+
+end
