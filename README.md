@@ -17,8 +17,8 @@ Collaborators
             * s == s’ 	→ return 1
             * s != s’ 	→ return 0 
         * Case 3: All other cases
-            * End point is in the correct direction → ![Kiku](images/"policy iteration convergence 2".png)
-            * End point is in the wrong direction  → return 0.25*pe
+            * End point is in the correct direction → return <img src="https://github.com/nathanzmarch/183DApset1/blob/master/Equations/sasprob%20case%203a.png" alt="alt text" height="20px" align="center">
+            * End point is in the wrong direction  → return <img src="https://github.com/nathanzmarch/183DApset1/blob/master/Equations/sasprob%20case%203b.png" alt="alt text" height="20px" align="center">
             
 2. Planning Problem
     * I added the obstacles by adding additional cases in the isValidMove and isObstacle functions.
@@ -28,14 +28,14 @@ Collaborators
     * The initial policy will contain a probability distribution for each space with action probabilities for each action in the order [up, down, left, right, stay]. These are initialized to [0, 0, 1, 0, 0] for every valid spot, and [0, 0, 0, 0, 1] for all spots that can no longer move left.
     * I displayed it by mapping the probabilities to a matrix of string symbols, then outputting it to the terminal. I display an “X” for all obstacles. 
     * I compute policy evaluation by repeatedly recalculating the value array until it converges, i.e. there is no change after one iteration. 
-        * Value function: Vk+1(s) = a(s,a)s'P(s, a, s') [R(s')+Vk(s')]
-        * Convergence:  = maxs Vk+1(s)-Vk(s) <= 10-9
+        * Value function: <img src="https://github.com/nathanzmarch/183DApset1/blob/master/Equations/policy%20iteration%20value.png" alt="alt text" height="20px" align="center">
+        * Convergence: <img src="https://github.com/nathanzmarch/183DApset1/blob/master/Equations/policy%20iteration%20convergence.png" alt="alt text" height="20px" align="center">
     * I calculate the one-step lookahead by using the quality function Q to find the policy that gives me the best value at each step, given a values array.
-        * (s) =maxaQ(s, a)→  a prob. distribution where the best action is 100%
-        * Q(s, a) =s'P(s, a, s') [R(s')+Vk(s')] (s’ includes error cases too)
+        * <img src="https://github.com/nathanzmarch/183DApset1/blob/master/Equations/policy%20iteration%20prob%20distribution.png" alt="alt text" height="20px" align="center">
+        * <img src="https://github.com/nathanzmarch/183DApset1/blob/master/Equations/policy%20iteration%20quality.png" alt="alt text" height="20px" align="center">
     * I calculate the optimal policy through policy iteration, where I repeat the loop function below until convergence.
-        * V=policyEval(, A, )→ *=policyBackup(V, A, )
-        * Convergence: =* 
+        * <img src="https://github.com/nathanzmarch/183DApset1/blob/master/Equations/policy%20iteration%20value%20update.png" alt="alt text" height="20px" align="center">
+        * Convergence: <img src="https://github.com/nathanzmarch/183DApset1/blob/master/Equations/policy%20iteration%20convergence%202.png" alt="alt text" height="20px" align="center">
     * I used tic and toc to calculate the runtime, which was around 0.271 seconds for a =10-9convergence requirement
     * The expected reward at the starting location can be found by running displayValues on the final values function
         * Expected Rewards: 5.1
@@ -45,8 +45,8 @@ Collaborators
 
 4. Value Iteration
     * I designed a value evaluation function that takes in a value array and returns a value array. I then loop and update the value using this evaluation function until there is no change. Finally, I use policyBackup to calculate the optimal policy.
-        * Value function: Vk+1(s) = s'P(s, a, s') [R(s')+Vk(s')]
-        * Convergence: Vk+1=Vk
+        * Value function: <img src="https://github.com/nathanzmarch/183DApset1/blob/master/Equations/value%20iteration%20value.png" alt="alt text" height="20px" align="center">
+        * Convergence: <img src="https://github.com/nathanzmarch/183DApset1/blob/master/Equations/value%20iteration%20convergence.png" alt="alt text" height="20px" align="center">
         * Policy Calculation: Same as 4(d)(i)
     * The optimal policy calculated by this is the exact same as the one in 4(e). The expected reward at the starting location can be found by running displayValues on the final values function
         * Expected Rewards: 5.1
