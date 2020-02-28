@@ -40,8 +40,11 @@ Collaborators
     * The expected reward at the starting location can be found by running displayValues on the final values function
         * Expected Rewards: 5.1
         * Total Rewards: 4.7 (calculated using the gamma)
-        * This is the path that our policy iteration suggested, but I believe that this is wrong as this path takes us close to the street, making it more rewarding to go the other way around as seen on the right. As such, I believe the expected rewards here are artificially high and don’t take into account error cases. 
-        * Since the path is different and longer, the expected reward and actual reward should be different. I think expected reward might not necessarily be lower, as we aren’t skirting the street anymore, but the actual reward will be lower due to the longer path.
+        * Our calculated path and analysis can be found in the table below.
+            
+| <img src="https://github.com/nathanzmarch/183DApset1/blob/master/Graphs/Actual%20Path.png" alt="alt text" align="center">                                                                                                                                                                                               | <img src="https://github.com/nathanzmarch/183DApset1/blob/master/Graphs/Actual%20Path.png" alt="alt text" align="center">                                                                                                                                        |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| This is the path that our policy iteration suggested, but I believe that this is wrong as this path takes us close to the street, making it more rewarding to go the other way around as seen on the right. As such, I believe the expected rewards here are artificially high and don’t take into account error cases. | Since the path is different and longer, the expected reward and actual reward should be different. I think expected reward might not necessarily be lower, as we aren’t skirting the street anymore, but the actual reward will be lower due to the longer path. |
 
 4. Value Iteration
     * I designed a value evaluation function that takes in a value array and returns a value array. I then loop and update the value using this evaluation function until there is no change. Finally, I use policyBackup to calculate the optimal policy.
@@ -51,9 +54,14 @@ Collaborators
     * The optimal policy calculated by this is the exact same as the one in 4(e). The expected reward at the starting location can be found by running displayValues on the final values function
         * Expected Rewards: 5.1
         * Total Rewards: 4.7 (calculated using the gamma)
-        * This is the path that our policy iteration suggested, but I believe that this is wrong as this path takes us close to the street, making it more rewarding to go the other way around as seen on the right. As such, I believe the expected rewards here are artificially high and don’t take into account error cases. 
-        * Since the path is different and longer, the expected reward and actual reward should be different. I think expected reward might not necessarily be lower, as we aren’t skirting the street anymore, but the actual reward will be lower due to the longer path.
+        * The calculated path can be found in the table below, as well as my analysis.
     * I used the same tic and toc timing function to calculate the runtime, which was around 0.09 seconds for a =10-9convergence requirement. This is significantly faster than policy iteration, which is to be expected.
+    
+| <img src="https://github.com/nathanzmarch/183DApset1/blob/master/Graphs/Actual%20Path.png" alt="alt text" align="center">                                                                                                                                                                                               | <img src="https://github.com/nathanzmarch/183DApset1/blob/master/Graphs/Actual%20Path.png" alt="alt text" align="center">                                                                                                                                        |
+|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| This is the path that our value iteration suggested, but I believe that this is wrong as this path takes us close to the street, making it more rewarding to go the other way around as seen on the right. As such, I believe the expected rewards here are artificially high and don’t take into account error cases. | Since the path is different and longer, the expected reward and actual reward should be different. I think expected reward might not necessarily be lower, as we aren’t skirting the street anymore, but the actual reward will be lower due to the longer path. |
+
+
 
 5. Additional Scenarios
 
